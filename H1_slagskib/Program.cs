@@ -3,12 +3,34 @@ class Program
 {
     static Random random = new();
     static int size = 5;
+    static int ships = 3;
     static int[,] coordinates = new int[size, size];
     static void Main(string[] args)
     {
+        Menu();
         Grid();
-        AddRandomShips(3);
+        AddRandomShips(ships);
         ShowGrid();
+    }
+
+    private static void Menu()
+    {
+        Console.WriteLine("Welcome to battleships!");
+        //As long as the input connot parse to int. The loop will continue.
+        //If it CAN parse to int, then it outputs the value [size] and the method returns true and breaks the loop.
+        do{Console.WriteLine(" Choose size of grid: ");}
+        while (!int.TryParse(Console.ReadLine(), out size));
+        coordinates = new int[size, size];
+        do{Console.WriteLine(" How many ships: ");}
+        while (!int.TryParse(Console.ReadLine(), out ships));
+ 
+        //do
+        //{
+        //    string input = Console.ReadLine();
+        //    bool b = int.TryParse(input, out size);
+        //    if (b) break;
+        //} while (true);
+
     }
 
     static void AddRandomShips(int ships)
